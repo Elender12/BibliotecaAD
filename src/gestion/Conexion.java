@@ -7,10 +7,10 @@ import java.sql.Statement;
 
 public class Conexion {
 	Connection conn = null;
-	public Connection connect() {
+	public Connection connect(String host, String port, String db, String user, String password) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/biblioteca", "root", "root");
+			conn = DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+db+"\"", "root", "root");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
