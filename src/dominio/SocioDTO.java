@@ -1,5 +1,5 @@
 package dominio;
 
-public class Socio {
+public class SocioDTO {
 
 }
