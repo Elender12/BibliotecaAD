@@ -1,6 +1,7 @@
 package gestion;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -8,7 +9,7 @@ import java.sql.Statement;
 public class Conexion {
 	private final static String HOST = "localhost";
 	private final  static String PORT ="3306";
-	private final static String DB = "testdb";
+	private final static String DB = "biblioteca";
 	private final  static String USER = "root";
 	private final static String PASS = "root";
 	
@@ -17,7 +18,7 @@ public class Conexion {
 		Connection conn = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://"+HOST+":"+PORT+"/"+DB+"\"", USER, PASS);
+			conn = DriverManager.getConnection("jdbc:mysql://"+HOST+":"+PORT+"/"+DB, USER, PASS);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -45,6 +46,15 @@ public class Conexion {
 		try {
 			rs.close();
 		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	public static void close(PreparedStatement ps) {
+		try {
+			ps.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
